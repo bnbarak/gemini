@@ -17,7 +17,10 @@
     "url": "https://github.com/bnbarak/gemini/issues"
   },
   "homepage": "https://github.com/bnbarak/gemini#readme",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
@@ -29,5 +32,11 @@
     "webpack": "^4.35.2",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   }
 }
