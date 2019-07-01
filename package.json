@@ -1,7 +1,7 @@
 {
   "name": "gemini",
   "version": "1.0.0",
-  "description": "",
+  "description": "Solution for Gemini interview problem by Barak Ben Noon",
   "main": "index.js",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server",
