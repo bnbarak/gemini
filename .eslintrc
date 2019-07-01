@@ -8,5 +8,8 @@
   "plugins": ["flowtype", "react"],
   "rules": {
     "react/prop-types": 0
+  },
+  "settings": {
+      "import/resolver": "webpack"
   }
 }
