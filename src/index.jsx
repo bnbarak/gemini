@@ -10,6 +10,7 @@ const store = createStore(
   applyMiddleware(thunk),
 );
 
+
 ReactDOM.render(
   <Root store={store} />,
   document.getElementById('root'),
