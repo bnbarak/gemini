@@ -1,26 +1,27 @@
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-	devtool: 'eval',
-	entry: "./index.js",
-	context: __dirname + "/src",
-	devServer: {
-		index: "index.html"
+  devtool: "eval",
+  entry: "./index.js",
+  context: __dirname + "/src",
+  devServer: {
+    index: "index.html"
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader", "eslint-loader"]
+      }
+    ]
+  },
+	resolve: {
+		extensions: ['.js', '.jsx']
 	},
-	module: {
-		rules: [
-			{
-				test: /\.(js|jsx)$/,
-				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader"
-				}
-			}
-		],
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: "./index.html"
-		})
-	]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html"
+    })
+  ]
 };
