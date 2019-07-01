@@ -5,6 +5,8 @@
   },
   "parser": "babel-eslint",
   "extends": ["airbnb"],
-  "plugins": ["flowtype", "react"]
-
+  "plugins": ["flowtype", "react"],
+  "rules": {
+    "react/prop-types": 0
+  }
 }

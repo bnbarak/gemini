@@ -3,10 +3,11 @@ const FlowWebpackPlugin = require('flow-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
-  entry: './index.js',
+  entry: './index.jsx',
   context: `${__dirname}/src`,
   devServer: {
     index: 'index.html',
+    historyApiFallback: true,
   },
   module: {
     rules: [
