@@ -26,6 +26,8 @@ module.exports = {
       Actions: path.resolve(__dirname, 'src/actions/'),
       Reducers: path.resolve(__dirname, 'src/redcuers/'),
       Components: path.resolve(__dirname, 'src/components/'),
+      Api: path.resolve(__dirname, 'src/api/'),
+      Selectors: path.resolve(__dirname, 'src/selectors/'),
     },
   },
   plugins: [
