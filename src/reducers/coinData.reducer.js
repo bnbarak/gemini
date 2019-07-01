@@ -1,4 +1,4 @@
-export default (state = { test: 123 }, action) => {
+export default (state = { }, action) => {
   const { type } = action;
   if (type === '') {
     return { ...state };
