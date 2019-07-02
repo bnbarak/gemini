@@ -38,8 +38,8 @@ export const sendCoin = (toAddress, amount) => (dispatch, getState) => {
     toAddress,
     amount,
   };
-  dispatch(startGetCoinData());
 
+  dispatch(startGetCoinData());
   sendCoinApi(payload).then((response) => {
     const { data } = response;
     const { status } = data;

@@ -22,7 +22,6 @@ export const getAddressInformation = address => (dispatch) => {
       const { balance, transactions } = data;
       saveAddressInLocalStorage(address);
       dispatch(loginSuccess(address));
-      dispatch(setAppReady());
       dispatch(getBalance(balance));
       dispatch(getTransactions(transactions));
       history.push('/dashboard');
@@ -30,8 +29,7 @@ export const getAddressInformation = address => (dispatch) => {
     .catch(() => {
       dispatch(notificationError('Fail to login - address not found'));
       dispatch(loginFail());
-      dispatch(setAppReady());
-    });
+    }).then(() => dispatch(setAppReady()));
 };
 
 export const bootstrapApp = () => (dispatch) => {
@@ -41,5 +39,3 @@ export const bootstrapApp = () => (dispatch) => {
   }
   return dispatch(setAppReady());
 };
-
-export const logoutAction = () => {};

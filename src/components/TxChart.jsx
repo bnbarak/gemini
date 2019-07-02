@@ -23,7 +23,7 @@ class TxChart extends React.PureComponent {
     const { xAxis, yAxis, isLoading } = this.props;
     return (
       <div css={txChartStyle}>
-        <Box title="Balance over time">
+        <Box title="Balance Over Time">
           {isLoading && <div css={screenStyle} /> }
           <LineChart x={xAxis} y={yAxis} />
         </Box>

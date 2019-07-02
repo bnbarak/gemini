@@ -1,12 +1,12 @@
 import { coinActionTypes } from 'Utils/actionTypes.util';
 
-const defaultState = {
+export const defaultState = {
   balance: null,
   transactions: [],
   isLoading: true,
 };
 
-export default (state = defaultState, action) => {
+export default (state = defaultState, action = {}) => {
   const { type, payload } = action;
   if (type === coinActionTypes.GET_BALANCE_FOR_ADDRESS) {
     const { balance } = payload;
