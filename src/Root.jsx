@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import AppRouter from 'Components/AppRouter';
+import 'antd/dist/antd.css';
 
 const Root = ({ store }) => (
   <Provider store={store}>
