@@ -8,6 +8,7 @@ import Button from 'Components/Button';
 import { hasErrors } from 'Utils/formHelpers.util';
 import Box from 'Components/Box';
 import { sendCoin } from 'Actions/coin.actions';
+import isFloat from 'Utils/isFloat';
 
 const formStyle = css`
     text-align: center;
@@ -44,11 +45,8 @@ class SendForm extends React.PureComponent {
   };
 
   amountValidator = (rule, value, callback) => {
-    const number = parseFloat(value, 10);
-    const containsOnlyNumbers = /^\d+$/.test(value);
-    const isAPositiveNumber = !Number.isNaN(number) && number > 0;
-
-    if (containsOnlyNumbers && isAPositiveNumber) return callback();
+    const float = parseFloat(value);
+    if (isFloat(value) && float > 0) return callback();
     return callback(' ');
   };
 
@@ -76,7 +74,7 @@ class SendForm extends React.PureComponent {
 
     return (
       <Form.Item css={formItemStyle}>
-        {decorator(<TextInput placeholder="Amount" />)}
+        {decorator(<TextInput placeholder="Amount" autocomplete="off" />)}
       </Form.Item>
     );
   };
@@ -92,7 +90,7 @@ class SendForm extends React.PureComponent {
           htmlType="submit"
           disabled={hasErrors(getFieldsError())}
         >
-          Log in
+          Send
         </Button>
       </Form.Item>
     );
