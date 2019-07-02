@@ -2,7 +2,7 @@ import { coinActionTypes } from 'Utils/actionTypes.util';
 
 const defaultState = {
   balance: null,
-  transactions: null,
+  transactions: [],
 };
 
 export default (state = defaultState, action) => {

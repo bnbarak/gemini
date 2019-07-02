@@ -7,7 +7,6 @@ import { getBalance } from 'Selectors/coin.selectors';
 
 const balanceStyle = css`
     text-align: center;
-    margin-top: 20px;
 `;
 
 class Balance extends React.PureComponent {

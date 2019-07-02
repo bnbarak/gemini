@@ -3,6 +3,7 @@ import { jsx, css } from '@emotion/core';
 import React from 'react';
 import Header from 'Components/Header';
 import Balance from 'Components/Balance';
+import TxChart from 'Components/TxChart';
 
 const containerStyle = css`
   display: flex;
@@ -36,7 +37,9 @@ export default class Dashboard extends React.PureComponent {
           <div css={sideMenuStyle}>
             <Balance />
           </div>
-          <div css={contentStyle}>body</div>
+          <div css={contentStyle}>
+            <TxChart />
+          </div>
         </div>
       </div>
     );
