@@ -3,7 +3,8 @@ import { css, jsx } from '@emotion/core';
 import { connect } from 'react-redux';
 import React from 'react';
 import Box from 'Components/Box';
-import { getBalance } from 'Selectors/coin.selectors';
+import { getBalance, getIsLoadingCoinData } from 'Selectors/coin.selectors';
+import Loader from 'Components/Loader';
 
 const balanceStyle = css`
     text-align: center;
@@ -11,8 +12,9 @@ const balanceStyle = css`
 
 class Balance extends React.PureComponent {
   renderBalance = () => {
-    const { balance } = this.props;
-    return <div css={balanceStyle}>{balance}</div>;
+    const { balance, isLoading } = this.props;
+    const value = isLoading ? <Loader /> : balance;
+    return <div css={balanceStyle}>{value}</div>;
   }
 
   render() {
@@ -27,7 +29,7 @@ class Balance extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   const balance = getBalance(state);
-
-  return { balance };
+  const isLoading = getIsLoadingCoinData(state);
+  return { balance, isLoading };
 };
 export default connect(mapStateToProps, null)(Balance);

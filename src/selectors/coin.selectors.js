@@ -8,3 +8,5 @@ export const getBalance = createSelector(getCoinData, coin => coin.balance);
 export const getTx = createSelector(getCoinData, coin => coin.transactions);
 
 export const getTxGraphData = createSelector(getTx, tx => processTransactionData(tx));
+
+export const getIsLoadingCoinData = createSelector(getCoinData, coin => coin.isLoading);

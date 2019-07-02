@@ -2,10 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import AppRouter from 'Components/AppRouter';
+import { Notifs } from 'redux-notifications';
+import 'redux-notifications/lib/styles.css';
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    <AppRouter />
+    <div>
+      <AppRouter />
+      <Notifs store={store} />
+    </div>
   </Provider>
 );
 Root.propTypes = {

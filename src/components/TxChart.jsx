@@ -3,19 +3,28 @@ import { css, jsx } from '@emotion/core';
 import { connect } from 'react-redux';
 import React from 'react';
 import LineChart from 'Components/LineChart';
-import { getTxGraphData } from 'Selectors/coin.selectors';
+import { getIsLoadingCoinData, getTxGraphData } from 'Selectors/coin.selectors';
 import Box from 'Components/Box';
 
 const txChartStyle = css`
-    text-align: center;
+  text-align: center;
+`;
+
+const screenStyle = css`
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background: #dcdcdc47;
 `;
 
 class TxChart extends React.PureComponent {
   render() {
-    const { xAxis, yAxis } = this.props;
+    const { xAxis, yAxis, isLoading } = this.props;
     return (
       <div css={txChartStyle}>
         <Box title="Balance over time">
+          {isLoading && <div css={screenStyle} /> }
           <LineChart x={xAxis} y={yAxis} />
         </Box>
       </div>
@@ -25,6 +34,8 @@ class TxChart extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   const { xAxis, yAxis } = getTxGraphData(state);
-  return { xAxis, yAxis };
+  const isLoading = getIsLoadingCoinData(state);
+
+  return { xAxis, yAxis, isLoading };
 };
 export default connect(mapStateToProps, null)(TxChart);

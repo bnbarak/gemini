@@ -16,4 +16,6 @@ export const coinActionTypes = keymirror({
   GET_TX_FOR_ADDRESS: null,
   // Send coin fail
   SEND_COIN_ERROR: null,
+  // Starting fetching coin data
+  START_GET_COIN_DATA: null,
 });
