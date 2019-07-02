@@ -19,7 +19,7 @@ export default (state = defaultState, action = {}) => {
   }
 
   if (type === coinActionTypes.START_GET_COIN_DATA || type === coinActionTypes.SEND_COIN_ERROR) {
-    return { ...state, isLoading: false };
+    return { ...state, isLoading: true };
   }
   return { ...state };
 };
