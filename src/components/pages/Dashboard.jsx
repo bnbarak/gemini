@@ -2,6 +2,11 @@
 import { jsx, css } from '@emotion/core';
 import React from 'react';
 import Header from 'Components/Header';
+import Balance from 'Components/Balance';
+
+const containerStyle = css`
+  display: flex;
+`;
 
 const headerStyle = css`
   width: 100%;
@@ -12,12 +17,12 @@ const headerStyle = css`
 
 const sideMenuStyle = css`
   width: 25%;
-  display: inline-block;
+  padding: 20px 40px;
 `;
 
 const contentStyle = css`
   width: 75%;
-  display: inline-block;
+  padding: 20px 40px;
 `;
 
 export default class Dashboard extends React.PureComponent {
@@ -27,11 +32,11 @@ export default class Dashboard extends React.PureComponent {
         <div css={headerStyle}>
           <Header />
         </div>
-        <div css={sideMenuStyle}>
-          Side menu
-        </div>
-        <div css={contentStyle}>
-          body
+        <div css={containerStyle}>
+          <div css={sideMenuStyle}>
+            <Balance />
+          </div>
+          <div css={contentStyle}>body</div>
         </div>
       </div>
     );
