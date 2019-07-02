@@ -1,6 +1,6 @@
 import { getAddressInfo } from 'Api/user.api';
-import { userActionTypes } from 'Utils/actionTypes';
-import history from 'Utils/history';
+import { userActionTypes } from 'Utils/actionTypes.util';
+import history from 'Utils/history.util';
 
 export const loginAction = address => (dispatch) => {
   getAddressInfo(address).then((response) => {

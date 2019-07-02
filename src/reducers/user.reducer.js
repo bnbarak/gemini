@@ -1,4 +1,4 @@
-import { userActionTypes } from 'Utils/actionTypes';
+import { userActionTypes } from 'Utils/actionTypes.util';
 
 const defaultState = {
   isLogin: false,

@@ -1,16 +1,39 @@
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import React from 'react';
 import { connect } from 'react-redux';
-
 import {
-  Row, Col, Form, Input, Button,
+  Row, Col, Form,
 } from 'antd';
 import { loginAction } from 'Actions/user.actions';
+import { hasErrors } from 'Utils/formHelpers.util';
+import TextInput from 'Components/TextInput';
+import Button from 'Components/Button';
 
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
+const formStyle = css`
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  color: #c1c1c1;
+  padding: 20px;
+`;
+
+const formItemStyle = css`
+  height: 30px;
+  padding: 5px;
+  width: 200px;
+  margin: auto;
+  font-size: 17px;
+  color: #c1c1c1;
+  `;
+
 
 class LoginForm extends React.PureComponent {
+  componentDidMount() {
+    const { form } = this.props;
+    form.validateFields();
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { form, handleLogin } = this.props;
@@ -26,9 +49,7 @@ class LoginForm extends React.PureComponent {
 
   renderTitle = () => (
     <Col span={12}>
-      <h1>
-        Login
-      </h1>
+      <h1 css={css`color: #26ddf9;`}>Login</h1>
     </Col>
   );
 
@@ -36,16 +57,12 @@ class LoginForm extends React.PureComponent {
     const { form } = this.props;
     const { getFieldDecorator } = form;
     const decorator = getFieldDecorator('address', {
-      rules: [{ required: true, message: 'Please enter an address' }],
+      rules: [{ required: true, message: ' ' }],
     });
 
     return (
-      <Form.Item>
-        {decorator(
-          <Input
-            placeholder="Address"
-          />,
-        )}
+      <Form.Item css={formItemStyle}>
+        {decorator(<TextInput capitalize placeholder="Address" />)}
       </Form.Item>
     );
   };
@@ -55,9 +72,13 @@ class LoginForm extends React.PureComponent {
     const { getFieldsError } = form;
 
     return (
-      <Form.Item>
-        <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
-        Log in
+      <Form.Item css={formItemStyle}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          disabled={hasErrors(getFieldsError())}
+        >
+          Log in
         </Button>
       </Form.Item>
     );
@@ -65,13 +86,11 @@ class LoginForm extends React.PureComponent {
 
   render() {
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
+      <Form layout="inline" onSubmit={this.handleSubmit} css={formStyle}>
         <Row>
           {this.renderTitle()}
           <Col span={12}>
             {this.renderAddressFiled()}
-          </Col>
-          <Col span={12}>
             {this.renderSubmitButton()}
           </Col>
         </Row>
@@ -85,4 +104,7 @@ const mapDispatchToProps = dispatch => ({
   handleLogin: address => dispatch(loginAction(address)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(Login);
