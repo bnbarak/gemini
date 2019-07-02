@@ -14,4 +14,6 @@ export const coinActionTypes = keymirror({
   GET_BALANCE_FOR_ADDRESS: null,
   // Get transactinos for address
   GET_TX_FOR_ADDRESS: null,
+  // Send coin fail
+  SEND_COIN_ERROR: null,
 });

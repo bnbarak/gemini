@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import LineChart from 'Components/LineChart';
 import { getTxGraphData } from 'Selectors/coin.selectors';
+import Box from 'Components/Box';
 
 const txChartStyle = css`
     text-align: center;
@@ -11,11 +12,12 @@ const txChartStyle = css`
 
 class TxChart extends React.PureComponent {
   render() {
-    console.log(this.props);
     const { xAxis, yAxis } = this.props;
     return (
       <div css={txChartStyle}>
-        <LineChart x={xAxis} y={yAxis} />
+        <Box title="Balance over time">
+          <LineChart x={xAxis} y={yAxis} />
+        </Box>
       </div>
     );
   }

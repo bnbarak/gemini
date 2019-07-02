@@ -4,6 +4,7 @@ import React from 'react';
 import Header from 'Components/Header';
 import Balance from 'Components/Balance';
 import TxChart from 'Components/TxChart';
+import Send from 'Components/Send';
 
 const containerStyle = css`
   display: flex;
@@ -36,6 +37,7 @@ export default class Dashboard extends React.PureComponent {
         <div css={containerStyle}>
           <div css={sideMenuStyle}>
             <Balance />
+            <Send />
           </div>
           <div css={contentStyle}>
             <TxChart />

@@ -13,7 +13,7 @@ export default (transactions) => {
   transactions.forEach((tx) => {
     const { timestamp, amount, toAddress } = tx;
     if (timestamp && amount) {
-      const amountAsNumber = parseInt(amount, 10);
+      const amountAsNumber = parseFloat(amount);
       if (toAddress === accountAddress) {
         balance += amountAsNumber;
       } else {

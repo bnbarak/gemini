@@ -1,21 +1,16 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core';
-import React from 'react';
+import { css, jsx } from '@emotion/core';
 import { connect } from 'react-redux';
-import {
-  Row, Form,
-} from 'antd';
-import { getAddressInformation } from 'Actions/user.actions';
-import { hasErrors } from 'Utils/formHelpers.util';
+import React from 'react';
+import { Form } from 'antd';
 import TextInput from 'Components/TextInput';
 import Button from 'Components/Button';
+import { hasErrors } from 'Utils/formHelpers.util';
+import Box from 'Components/Box';
+import { sendCoin } from 'Actions/coin.actions';
 
 const formStyle = css`
-  width: 500px;
-  margin: auto;
-  text-align: center;
-  color: #c1c1c1;
-  padding: 20px;
+    text-align: center;
 `;
 
 const formItemStyle = css`
@@ -25,10 +20,9 @@ const formItemStyle = css`
   margin: auto;
   font-size: 17px;
   color: #c1c1c1;
-  `;
+ `;
 
-
-class LoginForm extends React.PureComponent {
+class SendForm extends React.PureComponent {
   componentDidMount() {
     const { form } = this.props;
     form.validateFields();
@@ -36,31 +30,53 @@ class LoginForm extends React.PureComponent {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { form, handleLogin } = this.props;
+    const { form, handleSend } = this.props;
+    const { resetFields } = form;
     form.validateFields((err, values) => {
-      const { address } = values;
+      const { toAddress, amount } = values;
       if (err) {
         console.log('Received values of form: ', values);
       } else {
-        handleLogin(address);
+        handleSend(toAddress, amount);
+        resetFields();
       }
     });
   };
 
-  renderTitle = () => (
-    <h1 css={css`color: #26ddf9;`}>Login</h1>
-  );
+  amountValidator = (rule, value, callback) => {
+    const number = parseFloat(value, 10);
+    const containsOnlyNumbers = /^\d+$/.test(value);
+    const isAPositiveNumber = !Number.isNaN(number) && number > 0;
+
+    if (containsOnlyNumbers && isAPositiveNumber) return callback();
+    return callback(' ');
+  };
 
   renderAddressFiled = () => {
     const { form } = this.props;
     const { getFieldDecorator } = form;
-    const decorator = getFieldDecorator('address', {
+    const decorator = getFieldDecorator('toAddress', {
       rules: [{ required: true, message: ' ' }],
     });
 
     return (
       <Form.Item css={formItemStyle}>
         {decorator(<TextInput placeholder="Address" />)}
+      </Form.Item>
+    );
+  };
+
+  renderAmountFiled = () => {
+    const { amountValidator } = this;
+    const { form } = this.props;
+    const { getFieldDecorator } = form;
+    const decorator = getFieldDecorator('amount', {
+      rules: [{ required: true, message: ' ' }, { validator: amountValidator }],
+    });
+
+    return (
+      <Form.Item css={formItemStyle}>
+        {decorator(<TextInput placeholder="Amount" />)}
       </Form.Item>
     );
   };
@@ -85,22 +101,22 @@ class LoginForm extends React.PureComponent {
   render() {
     return (
       <Form layout="inline" onSubmit={this.handleSubmit} css={formStyle}>
-        <Row>
-          {this.renderTitle()}
+        <Box title="Send Jobcoin">
           {this.renderAddressFiled()}
+          {this.renderAmountFiled()}
           {this.renderSubmitButton()}
-        </Row>
+        </Box>
       </Form>
     );
   }
 }
 
-const Login = Form.create({ name: 'loginForm' })(LoginForm);
+const Send = Form.create({ name: 'sendForm' })(SendForm);
 const mapDispatchToProps = dispatch => ({
-  handleLogin: address => dispatch(getAddressInformation(address)),
+  handleSend: (toAddress, amount) => dispatch(sendCoin(toAddress, amount)),
 });
 
 export default connect(
   null,
   mapDispatchToProps,
-)(Login);
+)(Send);

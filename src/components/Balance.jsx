@@ -17,7 +17,11 @@ class Balance extends React.PureComponent {
 
   render() {
     const { renderBalance } = this;
-    return <Box title="Balance" component={renderBalance()} />;
+    return (
+      <Box title="Balance">
+        {renderBalance()}
+      </Box>
+    );
   }
 }
 

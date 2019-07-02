@@ -14,7 +14,7 @@ export const saveAddressInLocalStorage = address => localStorage.setItem('addres
 
 export const setAppReady = () => ({ type: userActionTypes.APP_READY });
 
-export const loginAction = address => (dispatch) => {
+export const getAddressInformation = address => (dispatch) => {
   getAddressInfo(address)
     .then((response) => {
       const { data } = response;
@@ -35,7 +35,7 @@ export const loginAction = address => (dispatch) => {
 export const bootstrapApp = () => (dispatch) => {
   const address = localStorage.getItem('address');
   if (address) {
-    return dispatch(loginAction(address));
+    return dispatch(getAddressInformation(address));
   }
   return dispatch(setAppReady());
 };
