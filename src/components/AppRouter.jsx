@@ -27,10 +27,10 @@ class AppRouter extends React.PureComponent {
           <Router history={history}>
             <Route
               path="/dashboard"
-              render={() => (isLogin ? <Dashboard /> : <Redirect to="/login" />)}
+              render={() => (isLogin ? <Dashboard /> : <Redirect to="/" />)}
             />
             <Route
-              path="/login"
+              path="/"
               render={() => (isLogin ? <Redirect to="/dashboard" /> : <Login />)}
             />
           </Router>

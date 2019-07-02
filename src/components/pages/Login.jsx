@@ -3,7 +3,7 @@ import { jsx, css } from '@emotion/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-  Row, Col, Form,
+  Row, Form,
 } from 'antd';
 import { loginAction } from 'Actions/user.actions';
 import { hasErrors } from 'Utils/formHelpers.util';
@@ -48,9 +48,7 @@ class LoginForm extends React.PureComponent {
   };
 
   renderTitle = () => (
-    <Col span={12}>
-      <h1 css={css`color: #26ddf9;`}>Login</h1>
-    </Col>
+    <h1 css={css`color: #26ddf9;`}>Login</h1>
   );
 
   renderAddressFiled = () => {
@@ -89,10 +87,8 @@ class LoginForm extends React.PureComponent {
       <Form layout="inline" onSubmit={this.handleSubmit} css={formStyle}>
         <Row>
           {this.renderTitle()}
-          <Col span={12}>
-            {this.renderAddressFiled()}
-            {this.renderSubmitButton()}
-          </Col>
+          {this.renderAddressFiled()}
+          {this.renderSubmitButton()}
         </Row>
       </Form>
     );
