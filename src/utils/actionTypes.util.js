@@ -9,4 +9,9 @@ export const userActionTypes = keymirror({
   APP_READY: null,
 });
 
-export const coinActionTypes = keymirror({});
+export const coinActionTypes = keymirror({
+  // Get the jobcoin balance
+  GET_BALANCE_FOR_ADDRESS: null,
+  // Get transactinos for address
+  GET_TX_FOR_ADDRESS: null,
+});

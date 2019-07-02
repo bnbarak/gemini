@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import { Router, Redirect, Route } from 'react-router-dom';
 import history from 'Utils/history.util';
 import Dashboard from 'Components/pages/Dashboard';
 import Login from 'Components/pages/Login';

@@ -1,6 +1,7 @@
 import { getAddressInfo } from 'Api/user.api';
 import { userActionTypes } from 'Utils/actionTypes.util';
 import history from 'Utils/history.util';
+import { getBalance, getTransactions } from 'Actions/coin.actions';
 
 export const loginSuccess = address => ({
   type: userActionTypes.LOGIN_USER_SUCCESS,
@@ -17,10 +18,12 @@ export const loginAction = address => (dispatch) => {
   getAddressInfo(address)
     .then((response) => {
       const { data } = response;
-      console.log(data);
+      const { balance, transactions } = data;
       saveAddressInLocalStorage(address);
       dispatch(loginSuccess(address));
       dispatch(setAppReady());
+      dispatch(getBalance(balance));
+      dispatch(getTransactions(transactions));
       history.push('/dashboard');
     })
     .catch(() => {
