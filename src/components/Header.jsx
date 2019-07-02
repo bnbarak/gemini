@@ -6,7 +6,7 @@ import connect from 'react-redux/es/connect/connect';
 import { getUserAddress } from 'Selectors/user.selectors';
 
 const headerStyle = css`
-padding: 0 50px;
+  padding: 0 50px;
 `;
 
 const buttonStyle = css`

@@ -27,6 +27,11 @@ const formItemStyle = css`
   color: #c1c1c1;
   `;
 
+const titleStyle = css`
+  color: #26ddf9;
+   font-size: 17px;
+ `;
+
 
 class LoginForm extends React.PureComponent {
   componentDidMount() {
@@ -46,7 +51,7 @@ class LoginForm extends React.PureComponent {
   };
 
   renderTitle = () => (
-    <h1 css={css`color: #26ddf9; font-size: 17px;`}>
+    <h1 css={titleStyle}>
       Welcome! Sign in With
       <br />
       Your Jobcoin Account

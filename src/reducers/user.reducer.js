@@ -6,7 +6,7 @@ const defaultState = {
   address: null,
 };
 
-export default (state = defaultState, action) => {
+export default (state = defaultState, action = {}) => {
   const { type, payload } = action;
 
   if (type === userActionTypes.APP_READY) {
