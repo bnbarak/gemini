@@ -3,6 +3,7 @@ import { getUserAddress } from 'Selectors/user.selectors';
 import { sendCoinApi } from 'Api/coin.api';
 import { getAddressInfo } from 'Api/user.api';
 import { notificationError, notificationSuccess } from 'Actions/notification.actions';
+import { RESPONSE_STATUS_OK } from 'Utils/constants';
 
 export const getBalance = balance => ({
   type: coinActionTypes.GET_BALANCE_FOR_ADDRESS,
@@ -43,9 +44,9 @@ export const sendCoin = (toAddress, amount) => (dispatch, getState) => {
   sendCoinApi(payload).then((response) => {
     const { data } = response;
     const { status } = data;
-    if (status === 'OK') {
+    if (status === RESPONSE_STATUS_OK) {
       dispatch(updateCoinData(fromAddress));
-      dispatch(notificationSuccess(`${amount} jobcoin sent to ${toAddress}`));
+      dispatch(notificationSuccess(`${amount} j obcoin sent to ${toAddress}`));
     } else {
       dispatch(sendCoinFail());
     }

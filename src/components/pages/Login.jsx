@@ -70,7 +70,6 @@ class LoginForm extends React.PureComponent {
   renderSubmitButton = () => {
     const { form } = this.props;
     const { getFieldsError } = form;
-    console.log('getFieldsError()', getFieldsError());
     return (
       <Form.Item css={formItemStyle}>
         <Button
