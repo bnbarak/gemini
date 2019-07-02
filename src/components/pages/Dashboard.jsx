@@ -8,6 +8,9 @@ import Send from 'Components/Send';
 
 const containerStyle = css`
   display: flex;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const headerStyle = css`
@@ -20,11 +23,19 @@ const headerStyle = css`
 const sideMenuStyle = css`
   width: 25%;
   padding: 20px 40px;
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 const contentStyle = css`
   width: 75%;
   padding: 20px 40px;
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 export default class Dashboard extends React.PureComponent {

@@ -2,6 +2,7 @@ import { getAddressInfo } from 'Api/user.api';
 import { userActionTypes } from 'Utils/actionTypes.util';
 import history from 'Utils/history.util';
 import { getBalance, getTransactions } from 'Actions/coin.actions';
+import { notificationError } from 'Actions/notification.actions';
 
 export const loginSuccess = address => ({
   type: userActionTypes.LOGIN_USER_SUCCESS,
@@ -27,6 +28,7 @@ export const getAddressInformation = address => (dispatch) => {
       history.push('/dashboard');
     })
     .catch(() => {
+      dispatch(notificationError('Fail to login - address not found'));
       dispatch(loginFail());
       dispatch(setAppReady());
     });
