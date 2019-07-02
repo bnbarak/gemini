@@ -13,9 +13,11 @@ const style = css`
     color: #c5c5c5;
   }`;
 
-export default class Button extends React.PureComponent {
+class Button extends React.PureComponent {
   render() {
     const { props } = this;
     return <AntdButton css={style} {...props} />;
   }
 }
+
+export default Button;

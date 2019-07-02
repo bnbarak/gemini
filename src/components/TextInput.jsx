@@ -2,9 +2,10 @@
 import { jsx, css } from '@emotion/core';
 import React from 'react';
 import { Input } from 'antd';
+import PropTypes from 'prop-types';
 
 
-export default class TextInput extends React.PureComponent {
+class TextInput extends React.PureComponent {
   getStyle = () => {
     const { capitalize } = this.props;
     const textTransform = capitalize ? 'capitalize' : 'unset';
@@ -16,7 +17,7 @@ export default class TextInput extends React.PureComponent {
       height: 30px;
       text-transform: ${textTransform};
       `;
-  }
+  };
 
   render() {
     const { props, getStyle } = this;
@@ -24,3 +25,14 @@ export default class TextInput extends React.PureComponent {
     return <Input css={style} {...props} />;
   }
 }
+
+
+TextInput.propTypes = {
+  capitalize: PropTypes.bool,
+};
+
+TextInput.defaultProps = {
+  capitalize: false,
+};
+
+export default TextInput;

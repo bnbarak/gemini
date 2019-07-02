@@ -6,38 +6,54 @@ import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
 import history from 'Utils/history.util';
 import Dashboard from 'Components/pages/Dashboard';
 import Login from 'Components/pages/Login';
-import { getIsLogin } from 'Selectors/user.selectors';
+import { getIsAppReady, getIsLogin } from 'Selectors/user.selectors';
+import { bootstrapApp } from 'Actions/user.actions';
 
 const appStyle = css`
   font-family: 'Roboto', sans-serif;
 `;
 
 class AppRouter extends React.PureComponent {
-  render() {
-    const { isLogin } = this.props;
+  componentDidMount() {
+    const { handleBootstrap } = this.props;
+    handleBootstrap();
+  }
 
-    return (
-      <div css={appStyle}>
-        <Router history={history}>
-          <Route
-            path="/dashboard"
-            render={() => (isLogin ? <Dashboard /> : <Redirect to="/login" />)}
-          />
-          <Route
-            path="/login"
-            render={() => (isLogin ? <Redirect to="/dashboard" /> : <Login />)}
-          />
-        </Router>
-      </div>
-    );
+  render() {
+    const { isLogin, isAppReady } = this.props;
+    if (isAppReady) {
+      return (
+        <div css={appStyle}>
+          <Router history={history}>
+            <Route
+              path="/dashboard"
+              render={() => (isLogin ? <Dashboard /> : <Redirect to="/login" />)}
+            />
+            <Route
+              path="/login"
+              render={() => (isLogin ? <Redirect to="/dashboard" /> : <Login />)}
+            />
+          </Router>
+        </div>
+      );
+    }
+
+    return <div>Loading</div>;
   }
 }
 
 const mapStateToProps = (state) => {
   const isLogin = getIsLogin(state);
-  return { isLogin };
+  const isAppReady = getIsAppReady(state);
+
+  return { isLogin, isAppReady };
 };
+
+const mapDispatchToProps = dispatch => ({
+  handleBootstrap: () => dispatch(bootstrapApp()),
+});
+
 export default connect(
   mapStateToProps,
-  null,
+  mapDispatchToProps,
 )(AppRouter);

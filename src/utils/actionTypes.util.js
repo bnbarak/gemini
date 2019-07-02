@@ -5,6 +5,8 @@ export const userActionTypes = keymirror({
   LOGIN_USER_SUCCESS: null,
   // Fail to login
   LOGIN_USER_ERROR: null,
+  // Change the app ready state to true
+  APP_READY: null,
 });
 
 export const coinActionTypes = keymirror({});
