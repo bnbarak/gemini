@@ -46,7 +46,11 @@ class LoginForm extends React.PureComponent {
   };
 
   renderTitle = () => (
-    <h1 css={css`color: #26ddf9;`}>Login</h1>
+    <h1 css={css`color: #26ddf9; font-size: 17px;`}>
+      Welcome! Sign in With
+      <br />
+      Your Jobcoin Account
+    </h1>
   );
 
   renderAddressFiled = () => {
@@ -74,7 +78,7 @@ class LoginForm extends React.PureComponent {
           htmlType="submit"
           disabled={hasErrors(getFieldsError())}
         >
-          Log in
+          Sign In
         </Button>
       </Form.Item>
     );
