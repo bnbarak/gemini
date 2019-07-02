@@ -35,9 +35,7 @@ class SendForm extends React.PureComponent {
     const { resetFields } = form;
     form.validateFields((err, values) => {
       const { toAddress, amount } = values;
-      if (err) {
-        console.log('Received values of form: ', values);
-      } else {
+      if (!err) {
         handleSend(toAddress, amount);
         resetFields();
       }
@@ -74,7 +72,7 @@ class SendForm extends React.PureComponent {
 
     return (
       <Form.Item css={formItemStyle}>
-        {decorator(<TextInput placeholder="Amount" autocomplete="off" />)}
+        {decorator(<TextInput placeholder="Amount" autoComplete="off" />)}
       </Form.Item>
     );
   };

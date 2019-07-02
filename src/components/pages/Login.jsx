@@ -39,9 +39,7 @@ class LoginForm extends React.PureComponent {
     const { form, handleLogin } = this.props;
     form.validateFields((err, values) => {
       const { address } = values;
-      if (err) {
-        console.log('Received values of form: ', values);
-      } else {
+      if (!err) {
         handleLogin(address);
       }
     });

@@ -35,7 +35,7 @@ class Header extends React.PureComponent {
           {address}
         </div>
         <Button type="button" onClick={this.logout} css={buttonStyle}>
-        Logout
+        Sign Out
         </Button>
       </div>
     );
