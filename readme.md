@@ -23,6 +23,7 @@
 - add Prettier
 - abstract webpack config and create prod/dev webpack config
 - hot reload in webpack
+- emotionjs theme
 - <AppRouter /> need to be more consistant 
 - naming can be better:
     - selector should start with select: `selectIsLoading...`

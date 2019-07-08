@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// TODO: Handle errors better
 import { jsx, css } from '@emotion/core';
 import React from 'react';
 import { connect } from 'react-redux';
