@@ -15,7 +15,7 @@ class Balance extends React.PureComponent {
     const { balance, isLoading } = this.props;
     const value = isLoading ? <Loader /> : balance;
     return <div css={balanceStyle}>{value}</div>;
-  }
+  };
 
   render() {
     const { renderBalance } = this;

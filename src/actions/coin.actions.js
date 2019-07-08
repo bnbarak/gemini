@@ -41,12 +41,12 @@ export const sendCoin = (toAddress, amount) => (dispatch, getState) => {
   };
 
   dispatch(startGetCoinData());
-  sendCoinApi(payload).then((response) => {
+  sendCoinApi(payload).then((response) => { // TODO: Api functions should get explicit arguments
     const { data } = response;
     const { status } = data;
-    if (status === RESPONSE_STATUS_OK) {
+    if (status === RESPONSE_STATUS_OK) { // TODO: Change to statusCode
       dispatch(updateCoinData(fromAddress));
-      dispatch(notificationSuccess(`${amount} j obcoin sent to ${toAddress}`));
+      dispatch(notificationSuccess(`${amount} jobcoin sent to ${toAddress}`));
     } else {
       dispatch(sendCoinFail());
     }

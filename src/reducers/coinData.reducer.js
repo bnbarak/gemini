@@ -1,5 +1,6 @@
 import { coinActionTypes } from 'Utils/actionTypes.util';
 
+// TODO: Need to manage the {data: [], isLoading} as an entity object
 export const defaultState = {
   balance: null,
   transactions: [],

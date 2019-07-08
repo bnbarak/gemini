@@ -19,6 +19,7 @@ class AppRouter extends React.PureComponent {
     handleBootstrap();
   }
 
+  // TODO: Better router
   render() {
     const { isLogin, isAppReady } = this.props;
     if (isAppReady) {
@@ -38,7 +39,7 @@ class AppRouter extends React.PureComponent {
       );
     }
 
-    return <div>Loading</div>;
+    return <div>Loading</div>; // TODO: Replace with <Loader />
   }
 }
 

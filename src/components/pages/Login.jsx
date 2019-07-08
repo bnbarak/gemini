@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// TODO: Handle errors better
 import { jsx, css } from '@emotion/core';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -29,7 +30,7 @@ const formItemStyle = css`
 
 const titleStyle = css`
   color: #26ddf9;
-   font-size: 17px;
+  font-size: 17px;
  `;
 
 
