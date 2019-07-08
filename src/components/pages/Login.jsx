@@ -29,7 +29,7 @@ const formItemStyle = css`
 
 const titleStyle = css`
   color: #26ddf9;
-   font-size: 17px;
+  font-size: 17px;
  `;
 
 

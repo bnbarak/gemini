@@ -1,7 +1,7 @@
 import { actions as notifActions } from 'redux-notifications';
 
 const { notifSend } = notifActions;
-const dismissAfter = 5000; // TODO: move to constants file
+const dismissAfter = 5000; // TODO: Move to constants file
 
 export const notificationSuccess = message => notifSend({
   message,

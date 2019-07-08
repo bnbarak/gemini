@@ -1,3 +1,4 @@
+// TODO: Change the name to auth.action
 import { getAddressInfo } from 'Api/user.api';
 import { userActionTypes } from 'Utils/actionTypes.util';
 import history from 'Utils/history.util';
@@ -12,11 +13,12 @@ export const loginSuccess = address => ({
 
 export const loginFail = () => ({ type: userActionTypes.LOGIN_USER_ERROR });
 
-// TODO: wrap with a class and move to a util file
+// TODO: Wrap with a class and move to a util file
 export const saveAddressInLocalStorage = address => localStorage.setItem(STORAGE_KEY, address);
 
 export const setAppReady = () => ({ type: userActionTypes.APP_READY });
 
+// TODO: Move this to address action file
 export const getAddressInformation = address => (dispatch) => {
   getAddressInfo(address)
     .then((response) => {

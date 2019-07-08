@@ -24,7 +24,7 @@ class TxChart extends React.PureComponent {
     return (
       <div css={txChartStyle}>
         <Box title="Balance Over Time">
-          {/* TODO: move the next two lines to a render function */}
+          {/* TODO: Move the next two lines to a render function */}
           {isLoading && <div css={screenStyle} /> }
           <LineChart x={xAxis} y={yAxis} />
         </Box>

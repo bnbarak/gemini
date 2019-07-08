@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core';
 import { connect } from 'react-redux';
 import React from 'react';
-import { Form } from 'antd'; // TODO: re-order the imports by type
+import { Form } from 'antd'; // TODO: Re-order the imports by type
 import TextInput from 'Components/TextInput';
 import Button from 'Components/Button';
 import { hasErrors } from 'Utils/formHelpers.util';
@@ -94,7 +94,7 @@ class SendForm extends React.PureComponent {
     );
   };
 
-  // TODO: find a way to disable the error message under the field
+  // TODO: Find a way to disable the error message under the field
   render() {
     return (
       <Form layout="inline" onSubmit={this.handleSubmit} css={formStyle}>
@@ -108,8 +108,8 @@ class SendForm extends React.PureComponent {
   }
 }
 
-// TODO: rename handleSend -> send
-// TODO: forms' names should be a constant
+// TODO: Rename handleSend -> send
+// TODO: Forms' names should be a constant
 const Send = Form.create({ name: 'sendForm' })(SendForm);
 const mapDispatchToProps = dispatch => ({
   handleSend: (toAddress, amount) => dispatch(sendCoin(toAddress, amount)),
