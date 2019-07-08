@@ -2,6 +2,7 @@ const emptyChart = { xAxis: [], yAxis: [] };
 
 const getUserAddress = transactions => transactions[0].toAddress;
 
+// TODO: break this to little sub-functions
 export default (transactions) => {
   if (!transactions || transactions.length === 0) return emptyChart;
 

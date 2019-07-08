@@ -10,7 +10,6 @@ const middleware = [
   reduxThunk,
 ];
 
-
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(...middleware),
 ));

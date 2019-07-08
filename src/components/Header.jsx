@@ -20,7 +20,7 @@ const addressStyle = css`
 `;
 
 class Header extends React.PureComponent {
-  logout = () => {
+  logout = () => { // TODO: rename to handleLogout
     localStorage.removeItem('address');
     window.location.href = '/';
   };

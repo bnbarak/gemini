@@ -12,6 +12,7 @@ export const loginSuccess = address => ({
 
 export const loginFail = () => ({ type: userActionTypes.LOGIN_USER_ERROR });
 
+// TODO: wrap with a class and move to a util file
 export const saveAddressInLocalStorage = address => localStorage.setItem(STORAGE_KEY, address);
 
 export const setAppReady = () => ({ type: userActionTypes.APP_READY });
